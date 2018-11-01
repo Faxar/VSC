@@ -66,12 +66,13 @@ body {
 
 .searchResults {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 400px));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 10px;
 }
 
 .searchResults img {
-    width: 100%;
+    width: 100% !important;
+    height: auto !important;
 }
 
 .searchResults h4 {
