@@ -8,8 +8,13 @@
 
 body {
     background: #ccc;
-    margin: 20px 50px;
     line-height: 1.4;
+}
+
+.wrapper {
+    display: grid;
+    margin: 30px 50px;
+    grid-gap: 20px;
 }
 
 .navigation ul {
@@ -53,4 +58,27 @@ body {
     text-decoration: none;
     text-transform: uppercase;
     background: var(--primary);
+}
+
+.box {
+    box-shadow: var(--shadow);
+}
+
+.searchResults {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 400px));
+    grid-gap: 10px;
+}
+
+.searchResults img {
+    width: 100%;
+}
+
+.searchResults h4 {
+    text-align: center;
+}
+
+.list {
+    text-align: center;
+    text-justify: center;
 }
