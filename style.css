@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:700,400);
+
 /* CSS Variables */
 :root{
     --primary: #ddd;
@@ -9,6 +11,7 @@
 body {
     background: #ccc;
     line-height: 1.4;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .wrapper {
@@ -17,11 +20,19 @@ body {
     grid-gap: 20px;
 }
 
+.navigation {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; 
+    background: white;
+    grid-gap: 10px;
+}
+
 .navigation ul {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     list-style: none;
-    grid-gap: 20px;
+    grid-gap: 10px;
+    grid-column: 2;
 }
 
 .navigation a {
@@ -31,6 +42,7 @@ body {
     text-align: center;
     color: var(--dark);
     text-transform: uppercase;
+    box-shadow: var(--shadow);
 }
 
 .navigation a:hover {
@@ -57,7 +69,19 @@ body {
     border: 0;
     text-decoration: none;
     text-transform: uppercase;
-    background: var(--primary);
+}
+
+.btn:hover {
+    animation: color-me-in 5s;
+}
+
+@keyframes color-me-in {
+    0% {
+        background: var(--primary);
+    }
+    100% {
+        background: grey;
+    }
 }
 
 .box {
@@ -83,3 +107,28 @@ body {
     text-align: center;
     text-justify: center;
 }
+
+.datailsView {
+    display: grid;
+    grid-template-areas:
+    'ingredient picture'
+    'ingredient picture'
+    'instructions picture';
+}
+
+#ingredient {
+    grid-area: ingredient;
+}
+
+#detPic {
+    grid-area: picture;
+}
+
+#instructions {
+    grid-area: instructions;
+}
+
+#drink {
+    grid-template-rows: 2;
+}
+
