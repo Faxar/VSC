@@ -7,29 +7,43 @@
     <title>MixKiks/selection</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
     <body>
         <div class="wrapper">
-            <div class="navigation">
-                <ul>
+            <div class="controllerBox">
+                <ul class="mainControl">
                     <li>
                         <a href="index.html">Home</a>
                     </li>
                     <li>
-                        <a href="mySelection.html">My selection</a>
+                        <a href="mySelection.html">My Selection</a>
                     </li>
                 </ul>
+                <div class="searchControl">
+                    <input type="text" class="searchInput" id="searchField" onfocus="this.value=''">
+                        <button class="startSearch" id="search">Search</button>
+                </div>
+            </div>
+            <div class="list" id="list">
+                <div class="allIng">
+                    <input type="text" id="myInput" placeholder="Search for ingredients..">
+                    <table id="myTable">
+                        <tr class="header">
+                            <th>Ingredients</th>
+                    </tr>
+                    </table>      
+                </div>
+                <div class="userIng">
+                        <input type="text" id="searchInp" placeholder="Search for ingredients..">
+                        <table id="userTabl">
+                            <tr class="header">
+                                <th>Available ingredients</th>
+                            </tr>
+                        </table>      
+                    </div>
             </div>
         </div>
-        <div class="list" id="list">
-            <select name="sometext" size="7" id="optionList">
-            </select>
-        </div>
-        <div class="dInput">
-            
-        </div>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="list.js"></script>
-</body>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="list.js"></script>
+    </body>
 </html>
