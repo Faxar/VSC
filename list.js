@@ -1,56 +1,68 @@
-let ingredients = '';
+function getGitHubData() {
+    return axios.get('https://my-json-server.typicode.com/Faxar/demo/db');
+}
 
-(function() {
-    axios.get('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list')
-    .then((response) => {
-        console.log(response)
-        ingredients = response.data.drinks;
-        let output = '';
-        $.each(ingredients, (id, val) => {
-            output += `
-            <tr>
-                <td>${val.strIngredient1}</td>
-            </tr>
-            `
+function getDBData(){
+    return axios.get('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list');
+}
+
+axios.all([getGitHubData(), getDBData()])
+    .then(axios.spread((user, db) => {
+                let ingr = user.data.posts;
+                let output = '';
+                $.each(ingr, (id, val) => {
+                    output += `
+                    <tr>
+                        <td>${val.textContent}</td>
+                    </tr>
+                    `
+                })
+                $("#userTabl").append(output);
+
+                let ingredients = db.data.drinks;
+                let outputI = '';
+                $.each(ingredients, (id, val) => {
+                outputI += `
+                <tr>
+                    <td>${val.strIngredient1}</td>
+                </tr>
+                `
         })
-
-        $('#myTable').append(output);
-    })
-    .catch((error) => {
-        console.log(error)
-    })
-    
-    axios.get('https://my-json-server.typicode.com/Faxar/demo/db')
-    .then((response) => {
-        let ingr = response.data.posts;
-        let output = '';
-        $.each(ingr, (id, val) => {
-            console.log(val.textContent);
-            output += `
-            <tr>
-                <td>${val.textContent}</td>
-            </tr>
-            `
+        $('#myTable').append(outputI);
+        }))
+        .catch((err) => {
+            console.log('FAIL', err)
         })
+        .finally(() => {
+            //Remove DB ingredients duplicates that already user have.
+            $.each($("#userTabl").children().find('td'), (id, val) => {
+                $.each($('#myTable').children().find('td'),(id1, val1) => {
+                    if(val.textContent.toUpperCase() === val1.textContent.toUpperCase()){
+                        $(val1).parent().remove();
+                    }
+                })
+        })});
 
-        $("#userTabl").append(output);
-        console.log(output);
-
-    })
-    .catch((error) => {
-        console.log(error)
-    })
-})();
-
-$("input").click('click', function() {
+$("input").keyup(function() {
     filter($(this).attr('id'));
+    // console.log($(this).val());
 })
 
+$("#list").on('click', 'td', function (){
+    let cloneItem = $(this).parent().clone();
+    $(this).parent().remove();
+    cloneItem.appendTo("#userTabl");
+    pushToGit(cloneItem.textContent);
+    // console.log($(this).text());
+    //find closest table entry and get it 'ID'
+    // console.log($(this).closest('table').attr('id'));
+});
+    
 function filter(inputF){
     var input, filter, table, tr, td;
     input = document.getElementById(inputF);
     filter = input.value.toUpperCase();
-    table = (input.id === "myTable") ? document.getElementById("myTable") : document.getElementById("userTabl");
+    table = (input.id === "myInput") ? document.getElementById("myTable") : document.getElementById("userTabl");
     tr = table.getElementsByTagName("tr");
 
     for(var i = 0; i< tr.length; i++){
@@ -63,4 +75,16 @@ function filter(inputF){
             }
         }
     }
+}
+
+function pushToGit(item) {
+    let param = {
+        title: "Gin",
+        textContent: `"${item}"`
+    }
+    axios({
+        method: 'post',
+        url: '/posts',
+        data: param,
+    })
 }
