@@ -77,14 +77,10 @@ function filter(inputF){
     }
 }
 
+//Not working yet
 function pushToGit(item) {
-    let param = {
-        title: "Gin",
-        textContent: `"${item}"`
-    }
-    axios({
-        method: 'post',
-        url: '/posts',
-        data: param,
+    axios.post('https://my-json-server.typicode.com/Faxar/demo/posts', {"title": "Rum", "textContent": "mmm" })
+    .then((response)=>{
+        console.log("posted", response)
     })
 }
