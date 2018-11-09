@@ -34,7 +34,7 @@ axios.all([getGitHubData(), getDBData()])
             console.log('FAIL', err)
         })
         .finally(() => {
-            //Remove DB ingredients duplicates that already user have.
+            //Remove DB ingredients that user already have.
             $.each($("#userTabl").children().find('td'), (id, val) => {
                 $.each($('#myTable').children().find('td'),(id1, val1) => {
                     if(val.textContent.toUpperCase() === val1.textContent.toUpperCase()){
@@ -52,7 +52,7 @@ $("#list").on('click', 'td', function (){
     let cloneItem = $(this).parent().clone();
     $(this).parent().remove();
     cloneItem.appendTo("#userTabl");
-    pushToGit(cloneItem.textContent);
+    pushToGit($(this).text());
     // console.log($(this).text());
     //find closest table entry and get it 'ID'
     // console.log($(this).closest('table').attr('id'));
@@ -79,7 +79,8 @@ function filter(inputF){
 
 //Not working yet
 function pushToGit(item) {
-    axios.post('https://my-json-server.typicode.com/Faxar/demo/posts', {"title": "Rum", "textContent": "mmm" })
+    console.log(item);
+    axios.post('https://my-json-server.typicode.com/Faxar/demo/posts', {"title": "Rum", "textContent": item })
     .then((response)=>{
         console.log("posted", response)
     })
