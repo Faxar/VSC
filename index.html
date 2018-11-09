@@ -9,19 +9,19 @@
 </head>
 <body>
     <div class="wrapper">
-        <div class="navigation">
-            <ul>
-                <li>
-                    <a href="index.html">Home</a>
-                </li>
-                <li>
-                    <a href="mySelection.html">My selection</a>
-                </li>
-            </ul>
-        </div>
-        <div class="search">
-            <input type="text" class="searchInput" id="searchField" onfocus="this.value=''">
-            <button class="btn" id="btn1">Search</button>
+        <div class="controllerBox">
+                    <ul class="mainControl">
+                        <li>
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="mySelection.html">My Selection</a>
+                        </li>
+                    </ul>
+                    <div class="searchControl">
+                        <input type="text" class="searchInput" id="searchField" onfocus="this.value=''">
+                            <button class="startSearch" id="search">Search</button>
+                    </div>
         </div>
         <div class="searchResults" id="ent">
         </div>

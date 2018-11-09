@@ -8,7 +8,6 @@
             var ingredient = drink["strIngredient" + [i+1]];
             // var ingr = "strIngredient" + [i ];
             if(ingredient !== ""){
-                console.log(ingredient);
                 ingredients += `<li>${ingredient}</li>`
             }
             
@@ -33,3 +32,8 @@
         console.log(error)
     })
 })();
+
+document.getElementById("search").addEventListener("click", () => {
+    sessionStorage.setItem('searchId', document.getElementById("searchField").value);
+    document.location.href = "http://127.0.0.1:5500/index.html";
+});

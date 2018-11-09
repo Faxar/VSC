@@ -1,14 +1,13 @@
-// Check if local storage exist.
-// If "Yes", load previous search.
-(()=> {
-    if(localStorage.getItem('boxes')){
-        $('.searchResults').html(window.localStorage.getItem('boxes'));
+(function(){
+    if(sessionStorage.getItem('searchId')){
+        get(sessionStorage.getItem('searchId'));
     }
 })();
 
 // Event listener attached to search button.
-document.getElementById("btn1").addEventListener("click", () => {
+document.getElementById("search").addEventListener("click", () => {
     var searchText = document.getElementById("searchField").value;
+    document.location.href = "http://127.0.0.1:5500/details.html";
     if(searchText !== ''){
         window.localStorage.removeItem('boxes')
         get(searchText);
@@ -31,8 +30,7 @@ function get(searchText){
                 </div>`   
             })
         $('#ent').html(output);
-        var html = $('.searchResults').html();
-        window.localStorage.setItem('boxes', html);       
+        sessionStorage.setItem('searchId', searchText);
     })
     .catch((error) => {
         console.log(error)
@@ -49,3 +47,9 @@ $(document).on('click', ".box", function() {
     sessionStorage.setItem('id', attr);
     document.location.href = "http://127.0.0.1:5500/details.html"
 })
+
+
+// window.onbeforeunload = function() {
+//     localStorage.removeItem('boxes');
+//     return '';
+// }
