@@ -7,9 +7,7 @@
 // Event listener attached to search button.
 document.getElementById("search").addEventListener("click", () => {
     var searchText = document.getElementById("searchField").value;
-    document.location.href = "http://127.0.0.1:5500/details.html";
     if(searchText !== ''){
-        window.localStorage.removeItem('boxes')
         get(searchText);
     } 
 });
@@ -19,7 +17,6 @@ document.getElementById("search").addEventListener("click", () => {
 function get(searchText){
     axios.get('https://www.thecocktaildb.com/api/json/v1/1/search.php?s='+searchText)
     .then((response) => {
-        console.log(response);
             let drinks = response.data.drinks;
             let output = '';
             $.each(drinks, (id, value) => {
