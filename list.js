@@ -1,6 +1,7 @@
 (function(){
-    readAndLoadUserData();
+    // readAndLoadUserData();
     axiosGet();
+    console.log('IIFE');
 }
 )();
 
@@ -73,30 +74,31 @@ $('#list').find('input').keyup(function() {
 function axiosGet(){
     axios.all([getGitHubData(), getDBData()])
     .then(axios.spread((user, db) => {
-            console.log($('#userTabl').children().find('td').length);
             let ingredients = db.data.drinks;
             let outputI = '';
-            $.each(ingredients, (id, val) => {
-            outputI += `
-            <tr>
-                <td>${val.strIngredient1}</td>
-            </tr>
-            `
-            $('#myTable').append(outputI);
+            let uniqueOutput = [];
+            $.each(ingredients, (i, el) => {
+                if($.inArray(el, uniqueOutput) === -1) uniqueOutput.push(el); 
             })
-            if($('#userTabl').children().find('td').length === 0){
-                let ingr = user.data.posts;
-                let output = '';
-                $.each(ingr, (id, val) => {
+            $.each(uniqueOutput, (id, val) => {
+                outputI += `
+                <tr>
+                    <td>${val.strIngredient1}</td>
+                </tr>
+                `
+            })
+            $('#myTable').append(outputI);
+            let ingr = user.data.posts;
+            let output = '';
+            $.each(ingr, (id, val) => {
                 output += `
                 <tr>
                     <td>${val.textContent}</td>
                 </tr>
                 `
-                $('#userTabl').append(output);
-                })
-            }   
             })
+            $('#userTabl').append(output);
+            }))
     .catch((err) => {
         console.log('FAIL', err)
     })
@@ -105,10 +107,10 @@ function axiosGet(){
     })
 }
 
-window.addEventListener('beforeunload', function(event){
-    safeUserEntries();
-    event.return = 'something';
-})
+// window.addEventListener('beforeunload', function(event){
+//     safeUserEntries();
+//     event.return = 'something';
+// })
 
 
 /* 
@@ -118,9 +120,11 @@ Only read available right now
 
 //Load user data from session storage and populate to user table
 function readAndLoadUserData() {
-    let output = '';
-    for(let i=0; ;i++){
-        let sessionStorItem = sessionStorage.getItem('uId' + i);
+    let sessionStorItem = sessionStorage.getItem('uId0');
+    if(sessionStorItem !== null) {
+        let output = '';
+        for(let i=0; ;i++){
+        sessionStorItem = sessionStorage.getItem('uId' + i);
         console.log(sessionStorItem);
         if(sessionStorItem !== null){
            output += `
@@ -131,8 +135,9 @@ function readAndLoadUserData() {
         } else {
             break;
         }
-    }
-    $("#userTabl").append(output);
+        }
+        $("#userTabl").append(output);
+    }  
 }
 
 /*
