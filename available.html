@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MixKiks</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="controllerBox">
+                    <ul class="mainControl">
+                        <li>
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="mySelection.html">My Selection</a>
+                        </li>
+                        <li>
+                            <a href="available.html">Available</a>
+                        </li>
+                    </ul>
+                    <div class="searchControl">
+                        <input type="text" class="searchInput" id="searchField" onfocus="this.value=''">
+                        <button class="startSearch" id="search">Search</button>
+                    </div>
+        </div>
+        <div class="searchResults" id='avD'>
+            
+        </div>
+        <div class='ingControl'>
+            <input type="text" class='ingSearch' id='ingreSearch' onfocus="this.value=''">
+            <button class="ingStartSearch" id='searchIngBtn'>Search Ing</button>
+        </div>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="available.js"></script>
+</body>
