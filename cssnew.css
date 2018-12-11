@@ -1,4 +1,5 @@
 .wrapper {
+    font-family: 'Roboto Condensed', sans-serif;
     display: grid;
     min-height: 100vh;
     grid-template-columns: 40px 1fr;
@@ -9,8 +10,9 @@
   }
   
   .main {
+    display: grid;
     grid-area: main;
-    background-color: #2c3e50;
+    /* background-color: #2c3e50; */
   }
   
   .sidebar {
@@ -22,7 +24,6 @@
   
   .footer {
     grid-area: footer;
-    background-color: #c0392b;
   }
   
   .head {
@@ -73,7 +74,6 @@
   .mainBox {
     display: grid;
     background-color: grey;
-    min-height: 100%;
     margin: 10px 40px;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-gap: 10px;
@@ -84,4 +84,41 @@
     background-color: bisque;
   }
   
-  
+  .lists {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 10px;
+    grid-gap: 50px;
+  }
+
+  .list {
+    display: grid;
+    grid-template-rows: 20px 20px 1fr;
+    background-color: beige;
+    padding: 20px;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    font-size: 18px;
+  }
+
+  .list tr {
+    border-bottom: 1px solid #ddd;
+  }
+
+  #allIng {
+    grid-column: 2;
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ddd;
+    font-size: 18px;
+    height: auto;
+  }
+
+  #userIng {
+    grid-column: 3;
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ddd;
+    font-size: 18px;
+    height: auto;
+  }
