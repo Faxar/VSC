@@ -39,10 +39,32 @@
           <div class="head">
             <div class="burger">
               <i class="fas fa-list-ul fa-2x" style="font-size: 1.5em;"></i>
+              <div class="dropdown-content">
+                <a href="#popup1" style="display: block" id="getIn">Sign In</a>
+                <a href="" style="display: none">Sign out</a>
+                <a href="">Register</a>
+              </div>
             </div>
             <div class="userPro"></div>
             <div class="mid"></div>
           </div>
+          </div>
         </div>
+        <div class="overlay" id="popup1">
+          <div class="popup">
+            <a class="close" href="#">&times;</a>
+            <div class="login" id="user">
+              <input type="text" class="userIn">
+            </div>
+            <div class="login" id="signUp">
+              <input type="text" class="passwordIn">
+            </div>
+              <div class="bar">
+                <button class="bar-item">Login</button>
+                <button class="bar-item">Signup</button>
+              </div> 
+          </div>
+        </div>
+        <script src="script.js"></script>
     </body>
 </html>
