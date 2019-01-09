@@ -27,9 +27,10 @@
           </div>
           <div class="sidebar">
             <div class="controlPane">
-              <a href="list.html" class="fas fa-wrench" ></a>
-              <a href="" class="fas fa-wrench"></a>
-              <a href="" class="fas fa-wrench"></a>
+              <a href="http://127.0.0.1:5500/" class="fas fa-home"></a>
+              <a href="list.html" class="fas fa-list"></a>
+              <a href="register.html" class="fas fa-cocktail"></a>
+              <a href="" class="fas fa-book"></a>
               <a href="" class="fas fa-wrench"></a>
             </div>
           </div>
@@ -37,34 +38,35 @@
             some text
           </div>
           <div class="head">
-            <div class="burger">
-              <i class="fas fa-list-ul fa-2x" style="font-size: 1.5em;"></i>
-              <div class="dropdown-content">
-                <a href="#popup1" style="display: block" id="getIn">Sign In</a>
-                <a href="" style="display: none">Sign out</a>
-                <a href="">Register</a>
-              </div>
+            <div class="userPro">
+                <div id='userCred'>Guest/Login</div>
+                <div class="dropdown-content">
+                  <a href="#popup1" style="display: block" id="getIn">Sign In</a>
+                  <a href="" style="display: none">Sign out</a>
+                  <a href="">Register</a>
+                </div>
+              <img src="" alt="Avatar" style="display: none">
             </div>
-            <div class="userPro"></div>
             <div class="mid"></div>
-          </div>
           </div>
         </div>
         <div class="overlay" id="popup1">
-          <div class="popup">
+          <div class="popup" id="pop1">
             <a class="close" href="#">&times;</a>
             <div class="login" id="user">
-              <input type="text" class="userIn">
+              <input type="text" class="userIn" placeholder="Username">
             </div>
             <div class="login" id="signUp">
-              <input type="text" class="passwordIn">
+              <input type="text" class="passwordIn" placeholder="Password">
             </div>
               <div class="bar">
-                <button class="bar-item">Login</button>
-                <button class="bar-item">Signup</button>
+                  <input type="button" value="Login" id="loginUser"/>
+                <!-- <button class="bar-item">Login</button> -->
+                <input type="button" value="Back" id="backToMain">
               </div> 
           </div>
         </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="script.js"></script>
     </body>
 </html>
