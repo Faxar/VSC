@@ -58,7 +58,7 @@
     display: grid;
     grid-row: 2;
     justify-content: center;
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
   }
   
   .controlPane > a {
@@ -75,15 +75,37 @@
   
   .mainBox {
     display: grid;
-    background-color: grey;
     margin: 10px 40px;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(150px, 300px));
     grid-gap: 10px;
     padding: 10px;
   }
 
   .box {
+    position: relative;
     background-color: bisque;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  /* .box:hover {
+    box-shadow: 0px 4px 6px 0 rgba(0, 0, 0, 0.2);
+  } */
+
+  .box::before {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    box-shadow: 0px 10px 15px 0 rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 1000ms;
+  }
+
+  .box:hover::before {
+    opacity: 1;
   }
   
   .lists {
@@ -143,7 +165,7 @@
 
 .dropdown-content a:hover {background-color: #ddd;}
 
-.burger:hover .dropdown-content {display: block;}
+.userPro:hover .dropdown-content {display: block;}
 
 .overlay {
   position: fixed;
@@ -182,7 +204,7 @@
   color: #333;
 }
 .popup .close:hover {
-  color: #06D85F;
+  color: grey;
 }
 
 .items tr:hover {
@@ -203,3 +225,14 @@
   filter: blur(2px)
 }
 
+#userCred {
+  margin: 10px;
+  text-align: center;
+}
+
+.register {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
